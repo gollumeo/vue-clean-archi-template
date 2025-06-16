@@ -22,6 +22,7 @@
   "include": [
     "src",
     "node_modules/.pnpm/vitest@3.2.3_@types+node@24_8f6b7237adcf848fb6cf12ea073c1e29/node_modules/vitest/globals.d.ts",
-    "types"
+    "types",
+    "vite.config.ts"
   ],
 }
