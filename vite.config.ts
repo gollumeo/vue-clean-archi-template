@@ -1,3 +1,4 @@
+// @ts-expect-error: missing type or declaration
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, UserConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
