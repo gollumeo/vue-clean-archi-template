@@ -1,9 +1,10 @@
-import { defineConfig } from 'vite';
+import tailwindcss from '@tailwindcss/vite';
+import { defineConfig, UserConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vue(), tailwindcss()],
   resolve: {
     alias: {
       '@application': path.resolve(__dirname, './src/Application'),
@@ -16,4 +17,4 @@ export default defineConfig({
       '@tests': path.resolve(__dirname, './src/Presentation/Tests'),
     },
   },
-});
+} as UserConfig);

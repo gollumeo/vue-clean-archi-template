@@ -13,7 +13,7 @@
     },
     "module": "ESNext",
     "target": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "strict": true,
     "esModuleInterop": true,
