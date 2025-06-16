@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint . --ext .ts,.vue",
     "format": "prettier --write .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest"
   },
   "keywords": [
     "clean architecture",
@@ -30,6 +30,7 @@
     "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-vue": "^10.2.0",
+    "jsdom": "^26.1.0",
     "prettier": "^3.5.3",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.3",
@@ -38,6 +39,11 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.10",
-    "tailwindcss": "^4.1.10"
+    "@unhead/vue": "^2.0.10",
+    "@vue/test-utils": "^2.4.6",
+    "pinia": "^3.0.3",
+    "tailwindcss": "^4.1.10",
+    "vue": "^3.5.16",
+    "vue-router": "^4.5.1"
   }
 }
