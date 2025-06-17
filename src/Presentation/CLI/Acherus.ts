@@ -12,8 +12,8 @@ export class Acherus
         const applicationDir = path.join(this.outputDir, 'Application');
         fs.mkdirSync(applicationDir, { recursive: true });
 
-        const useCasePath = path.join(applicationDir, `${ name }.ts`);
-        const testPath = path.join(applicationDir, `${ name }.test.ts`);
+        const useCasePath: string = path.join(applicationDir, `${ name }.ts`);
+        const testPath: string = path.join(applicationDir, `${ name }.test.ts`);
 
         fs.writeFileSync(useCasePath, `export class ${ name } {}`);
         fs.writeFileSync(testPath, `describe('${ name }', () => {});`);
