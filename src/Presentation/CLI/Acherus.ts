@@ -7,9 +7,9 @@ export class Acherus
     {
     }
 
-    make(_: string, name: string)
+    make(_: string, name: string): void
     {
-        const applicationDir = path.join(this.outputDir, 'Application');
+        const applicationDir: string = path.join(this.outputDir, 'Application');
         fs.mkdirSync(applicationDir, { recursive: true });
 
         const useCasePath: string = path.join(applicationDir, `${ name }.ts`);
