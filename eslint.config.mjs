@@ -7,7 +7,6 @@ import tsParser from "@typescript-eslint/parser";
 import { defineConfig } from "eslint/config";
 
 export default defineConfig([
-    // 1. JS recommandé
     {
         files: ["**/*.{js,mjs,cjs}"],
         languageOptions: {
@@ -18,7 +17,6 @@ export default defineConfig([
         rules: js.configs.recommended.rules
     },
 
-    // 2. Règles globales + style
     {
         files: ["**/*.{js,mjs,cjs,jsx,ts,tsx,vue}"],
         ignores: [
@@ -47,11 +45,31 @@ export default defineConfig([
                 "error",
                 "always"
             ],
-            "indent": "off"
+            "indent": [
+                "error",
+                4,
+                {
+                    "SwitchCase": 1,
+                    "outerIIFEBody": 1,
+                    "FunctionDeclaration": {
+                        "parameters": "first",
+                        "body": 1
+                    },
+                    "FunctionExpression": {
+                        "parameters": "first",
+                        "body": 1
+                    },
+                    "CallExpression": {
+                        "arguments": "first"
+                    },
+                    "ignoredNodes": ["TemplateLiteral *"],
+                    "flatTernaryExpressions": false,
+                    "ignoreComments": false
+                }
+            ]
         }
     },
 
-    // 3. TypeScript recommandé (sans plugin)
     {
         files: ["**/*.{ts,tsx,vue}"],
         languageOptions: {
@@ -63,7 +81,6 @@ export default defineConfig([
         rules: tsPlugin.configs.recommended.rules
     },
 
-    // 4. Vue essential + parser
     ...pluginVue.configs["flat/essential"],
     {
         files: ["**/*.vue"],
