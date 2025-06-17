@@ -17,7 +17,6 @@ describe('Acherus CLI', () => {
         const acherus = new Acherus(outputDir);
         const action: string = 'use-case';
         const useCaseName: string = 'IntroduceTestUseCase';
-        const array = [1, 2, 3, 4, 5];
 
         acherus.make(action, useCaseName);
 
