@@ -1,22 +1,77 @@
 import js from "@eslint/js";
 import globals from "globals";
-import tseslint from "typescript-eslint";
 import pluginVue from "eslint-plugin-vue";
-import json from "@eslint/json";
-import markdown from "@eslint/markdown";
-import css from "@eslint/css";
-import {defineConfig} from "eslint/config";
-
+import vueParser from "vue-eslint-parser";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
+import tsParser from "@typescript-eslint/parser";
+import { defineConfig } from "eslint/config";
 
 export default defineConfig([
-    {files: ["**/*.{js,mjs,cjs,ts,mts,cts,vue}"], plugins: {js}, extends: ["js/recommended"]},
-    {files: ["**/*.{js,mjs,cjs,ts,mts,cts,vue}"], languageOptions: {globals: globals.browser}},
-    tseslint.configs.recommended,
-    pluginVue.configs["flat/essential"],
-    {files: ["**/*.vue"], languageOptions: {parserOptions: {parser: tseslint.parser}}},
-    {files: ["**/*.json"], plugins: {json}, language: "json/json", extends: ["json/recommended"]},
-    {files: ["**/*.jsonc"], plugins: {json}, language: "json/jsonc", extends: ["json/recommended"]},
-    {files: ["**/*.json5"], plugins: {json}, language: "json/json5", extends: ["json/recommended"]},
-    {files: ["**/*.md"], plugins: {markdown}, language: "markdown/gfm", extends: ["markdown/recommended"]},
-    {files: ["**/*.css"], plugins: {css}, language: "css/css", extends: ["css/recommended"]},
+    // 1. JS recommandé
+    {
+        files: ["**/*.{js,mjs,cjs}"],
+        languageOptions: {
+            ecmaVersion: "latest",
+            sourceType: "module",
+            globals: globals.browser
+        },
+        rules: js.configs.recommended.rules
+    },
+
+    // 2. Règles globales + style
+    {
+        files: ["**/*.{js,mjs,cjs,jsx,ts,tsx,vue}"],
+        ignores: [
+            "node_modules/**",
+            "dist/**"
+        ],
+        languageOptions: {
+            ecmaVersion: "latest",
+            sourceType: "module",
+            globals: globals.browser
+        },
+        rules: {
+            "brace-style": [
+                "error",
+                "allman"
+            ],
+            "array-bracket-newline": [
+                "error",
+                { "minItems": 2 }
+            ],
+            "array-element-newline": [
+                "error",
+                { "minItems": 2 }
+            ],
+            "object-curly-spacing": [
+                "error",
+                "always"
+            ],
+            "indent": "off"
+        }
+    },
+
+    // 3. TypeScript recommandé (sans plugin)
+    {
+        files: ["**/*.{ts,tsx,vue}"],
+        languageOptions: {
+            parser: tsParser
+        },
+        plugins: {
+            "@typescript-eslint": tsPlugin
+        },
+        rules: tsPlugin.configs.recommended.rules
+    },
+
+    // 4. Vue essential + parser
+    ...pluginVue.configs["flat/essential"],
+    {
+        files: ["**/*.vue"],
+        languageOptions: {
+            parser: vueParser,
+            parserOptions: {
+                parser: tsParser
+            }
+        }
+    }
 ]);
