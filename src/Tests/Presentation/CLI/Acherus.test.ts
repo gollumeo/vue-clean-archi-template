@@ -40,4 +40,20 @@ describe('Acherus CLI', () =>
         expect(fs.existsSync(path.join(outputDir, 'Application', `${ useCaseName }.ts`))).toBeTruthy();
         expect(fs.existsSync(path.join(outputDir, 'Tests', 'Application', `${ useCaseName }.test.ts`))).toBeTruthy();
     })
+
+    it('should throw if the use case file already exists', (): void => 
+    {
+        const useCaseName: string = 'AlreadyThere';
+
+        const fakeUseCasePath: string = path.join(outputDir, 'Application', `${ useCaseName }.ts`);
+        const fakeTestPath: string = path.join(outputDir, 'Tests', 'Application', `${ useCaseName }.test.ts`);
+
+        fs.mkdirSync(path.dirname(fakeUseCasePath), { recursive: true });
+        fs.writeFileSync(fakeUseCasePath, '// pre-existing content');
+
+        fs.mkdirSync(path.dirname(fakeTestPath), { recursive: true });
+        fs.writeFileSync(fakeTestPath, '// pre-existing test');
+
+        expect(() => acherus.make('', useCaseName)).toThrowError();
+    });
 });
