@@ -27,7 +27,14 @@ export class Acherus
 
     private writeFiles(useCasePath: string, testPath: string, name: string): void
     {
+        if (fs.existsSync(useCasePath))
+            throw new Error(`The use case file ${ useCasePath } already exists.`);
+
         fs.writeFileSync(useCasePath, `export class ${ name } {}`);
+
+        if (fs.existsSync(testPath))
+            throw new Error(`The test file ${ testPath } already exists.`);
+        
         fs.writeFileSync(testPath, `describe('${ name }', () => {});`);
     }
 }
