@@ -6,9 +6,9 @@ import { FilesList } from "../../FileSystem/FilesList";
 
 describe('Acherus CLI', () => 
 {
-    const sandboxDir = path.resolve(path.join(__dirname, '../../../__sandbox__/Acherus'));
-    const acherus = new Acherus(sandboxDir);
-    const filesList = new FilesList();
+    const sandboxDir: string = path.resolve(path.join(__dirname, '../../../__sandbox__/Acherus'));
+    const acherus: Acherus = new Acherus(sandboxDir);
+    const filesList: FilesList = new FilesList();
 
     beforeEach(() => 
     {
