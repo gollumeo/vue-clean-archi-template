@@ -13,7 +13,7 @@ describe('Acherus CLI', (): void =>
     beforeEach((): void => 
     {
         fs.mkdirSync(sandboxDir, { recursive: true });
-    })
+    });
 
     afterEach((): void => 
     {
@@ -36,5 +36,5 @@ describe('Acherus CLI', (): void =>
         const createdFiles: string[] = filesList.allIn(expectedPath);
 
         expect(createdFiles).toContain(useCaseName + '.ts');
-    })
+    });
 });
