@@ -10,8 +10,8 @@ export class FilesList implements IFilesList
 
         for (const file of fs.readdirSync(dir)) 
         {
-            const fullPath = path.join(dir, file);
-            const stat = fs.statSync(fullPath);
+            const fullPath: string = path.join(dir, file);
+            const stat: fs.Stats = fs.statSync(fullPath);
 
             if (!stat.isDirectory()) 
             {
