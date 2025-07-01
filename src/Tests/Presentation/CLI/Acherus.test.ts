@@ -1,6 +1,7 @@
 import { Acherus } from "@cli/Acherus";
 import * as fs from "node:fs";
 import path from "path";
+import { IFilesList } from "Tests/FileSystem/Contracts/IFilesList";
 import { afterEach, beforeEach } from "vitest";
 import { FilesList } from "../../FileSystem/FilesList";
 
@@ -8,7 +9,7 @@ describe('Acherus CLI', (): void =>
 {
     const sandboxDir: string = path.resolve(path.join(__dirname, '../../../__sandbox__/Acherus'));
     const acherus: Acherus = new Acherus(sandboxDir);
-    const filesList: FilesList = new FilesList();
+    const filesList: IFilesList = new FilesList();
 
     beforeEach((): void => 
     {
