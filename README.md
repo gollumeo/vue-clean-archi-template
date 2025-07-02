@@ -1,8 +1,11 @@
 # Vue Clean Architecture Template
 
-A frontend-only template designed for developers who value **clarity, sovereignty, and maintainability** over quick-and-dirty shipping.
+A frontend-only template designed for developers who value **clarity, sovereignty, and maintainability** over
+quick-and-dirty shipping.
 
-Built for Vue 3 with Vite, this template enforces a real **Clean Architecture** separation from day one. Whether you're targeting Vue, Svelte, React, or just building an SDK-like UI layer, this template ensures your business logic and structure are never held hostage by your framework.
+Built for Vue 3 with Vite, this template enforces a real **Clean Architecture** separation from day one. Whether you're
+targeting Vue, Svelte, React, or just building an SDK-like UI layer, this template ensures your business logic and
+structure are never held hostage by your framework.
 
 ---
 
