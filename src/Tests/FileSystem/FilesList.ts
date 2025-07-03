@@ -4,6 +4,9 @@ import { IFilesList } from "Tests/FileSystem/Contracts/IFilesList";
 
 export class FilesList implements IFilesList
 {
+    /**
+     * @inheritDoc
+     */
     public allIn(dir: string): string[]
     {
         let results: string[] = [];
